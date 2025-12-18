@@ -434,7 +434,7 @@ function insertarCarteraMinimalista() {
         line-height:1;
     ">🛈</span>
     <span>
-    Valores tentativos sem 49</span>
+    Semanas 50 y 51 en Proceso..</span>
 </div>
     `;
 
@@ -847,6 +847,7 @@ function mostrarGraficoFlujo() {
 function cerrarGraficoFlujo() {
     document.getElementById("modalGraficoFlujo").style.display = "none";
 }
+
 
 
 
