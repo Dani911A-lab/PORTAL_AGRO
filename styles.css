@@ -1,0 +1,675 @@
+/* ======================================================
+   MINI SISTEMA AGRÍCOLA — CSS OPTIMIZADO
+====================================================== */
+
+/* ================= GLOBAL ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #d9d8e0 0%, #c9cdcb 100%);
+    overflow: hidden;
+}
+
+.contenedor-principal {
+  margin: 20px;
+  padding: 10px;
+  border-radius: 24px;
+  background:
+    radial-gradient(circle, rgba(219, 219, 219, 0.796) 1px, transparent 1px),
+    linear-gradient(
+      180deg,
+      #f5f5f5 0%,
+      #ffffff 45%,
+      #e9edf3 100%
+    );
+  background-size:
+    20px 20px,
+    100% 100%;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+  height: calc(100vh - 40px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+
+.app {
+    display: flex;
+    height: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+/* ================= TITULO PRINCIPAL ================= */
+#titulo {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    font-size: 28px;
+    font-weight: 500;
+    color: #ba027d;
+    letter-spacing: 0.3px;
+    margin-bottom: 16px;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.08);
+}
+
+/* ================= SIDEBAR ================= */
+.sidebar {
+    width: 230px;
+    padding: 26px 20px;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(22px);
+    border-right: 1px solid rgba(255,255,255,0.3);
+    border-radius: 0 22px 22px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    overflow-y: auto;
+    box-shadow: 6px 0 18px rgba(0,0,0,0.08);
+}
+
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.13);
+    border-radius: 4px;
+}
+
+.brand {
+    padding-left: 4px;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+}
+
+.brand-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #140f70;
+    display: block;
+    line-height: 1.1;
+}
+
+.brand-subtitle {
+    font-size: 11px;
+    font-weight: 400;
+    color: #716e6e;
+    display: block;
+    line-height: 1.05;
+    margin-top: -10px;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #3a3a3a;
+    cursor: pointer;
+    border-radius: 10px;
+    position: relative;
+    transition: 0.22s;
+}
+
+.menu-item::before {
+    font-size: 14px;
+    width: 16px;
+    opacity: 0.75;
+}
+
+.menu-item[data-modulo="produccion"]::before { content:"📊"; }
+.menu-item[data-modulo="gastos"]::before { content:"💼"; }
+.menu-item[data-modulo="liquidaciones"]::before { content:"💰"; }
+.menu-item[data-modulo="cxc"]::before { content:"🗳️"; }
+
+.menu-item.active::after {
+    content: "";
+    position: absolute;
+    left: -10px;
+    width: 3px;
+    height: 70%;
+    background: #ca0588;
+    border-radius: 20px;
+    box-shadow: 0 0 8px rgba(82,0,55,0.2);
+}
+
+.menu-item:hover {
+    background: rgba(0,0,0,0.05);
+    transform: translateX(2px);
+}
+
+.menu-item.active {
+    background: rgba(186,2,125,0.12);
+    color: #ba027d;
+    box-shadow: 0 3px 10px rgba(186,2,125,0.18);
+}
+
+/* ================= MAIN ================= */
+.main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 20px 50px 30px;
+    min-height: 0;
+    overflow: hidden;
+}
+
+/* ================= SELECTORES ================= */
+.selectores {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+}
+
+.selectores label {
+    font-weight: bold;
+    color: #56585b;
+}
+
+.selectores select {
+    padding: 10px 36px 10px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 12px;
+    border: 1px solid #d1d5db;
+    background: #fff;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='gray' viewBox='0 0 16 16'%3E%3Cpath d='M1.5 5.5l6 6 6-6'/%3E%3C/svg%3E");
+    background-position: right 12px center;
+    background-repeat: no-repeat;
+    background-size: 14px;
+    transition: .2s;
+}
+
+.selectores select:hover {
+    border-color: #3b82f6;
+}
+
+.selectores select:focus {
+    border-color: #2563eb;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(37,99,235,0.2);
+}
+
+/* ================= KPIs ================= */
+.kpis {
+    display: flex;
+    gap: 14px;
+    overflow-x: auto;
+    padding-bottom: 2px;
+    background: transparent;
+}
+
+.kpi {
+    flex: 1;
+    min-width: 100px;
+    text-align: center;
+    border-radius: 16px;
+    background: white;
+    border: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.167);
+    padding: 16px;
+    position: relative;
+    overflow: hidden;
+}
+
+.kpi h4 {
+    font-size: 13px;
+    font-weight: 600;
+    color: #978774;
+    margin-bottom: 6px;
+}
+
+.kpi span {
+    font-size: 18px;
+    font-weight: bold;
+    color: #092204;
+}
+
+.kpi::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='8'%3E%3Cpath d='M0,4 Q10,0 20,4 T40,4' stroke='%23cccccc' stroke-width='0.5' fill='none' /%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 40px 4px;
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+/* ================= ZONA SUPERIOR ================= */
+.zona-superior {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: 2fr 1fr;
+    flex: 1;
+    min-height: 0;
+}
+
+.tabla-contenedor {
+    padding: 16px 20px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.154);
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.tabla-scroll {
+    flex: 1;
+    overflow-y: auto;
+    border-radius: 12px;
+    min-height: 150px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0,0,0,0.2) transparent;
+}
+
+.tabla-scroll::-webkit-scrollbar {
+    width: 6px;
+}
+
+.tabla-scroll::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.2);
+    border-radius: 4px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    color: #01307a;
+}
+
+th, td {
+    padding: 6px;
+    text-align: center;
+}
+
+thead {
+    position: sticky;
+    top: 0;
+    background: #eff1fa;
+    z-index: 5;
+    border-bottom: 2px solid #e5e7eb;
+    color: #1b2c3d;
+}
+
+tbody tr:nth-child(even) {
+    background: #f3f3f3;
+}
+
+tbody tr:hover {
+    background: #e5edff;
+}
+
+/* ================= ZONA INFERIOR ================= */
+.zona-inferior {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    min-height: 0;
+}
+
+.grafico-box {
+    flex: 1;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+    min-height: 0;
+}
+
+.grafico-wrapper {
+    flex: 1;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+canvas {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* ================= LOGIN ================= */
+.login-box {
+    width: 320px;
+    margin: 80px auto;
+    padding: 32px 28px;
+    background: rgba(255,255,255,0.95);
+    border-radius: 20px;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    transition: none;
+}
+
+.login-box h2 {
+    font-size: 22px;
+    color: #ba027d;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.login-box input {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 14px;
+    border-radius: 12px;
+    border: 1px solid #d1d5db;
+    outline: none;
+    transition: .2s;
+    background: #f6f6f6;
+}
+
+.login-box input:focus {
+    border-color: #ba027d;
+    box-shadow: 0 0 0 3px rgba(186,2,125,0.2);
+    background: #fff;
+}
+
+.login-box button {
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+    font-weight: bold;
+    color: #fff;
+    background: #ba027d;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.login-box button:hover {
+    background: #ca0588;
+    transform: none;
+}
+
+#loginError {
+    color: #ff3b3b;
+    font-size: 13px;
+    text-align: center;
+    min-height: 18px;
+}
+
+/* ================= LOADER ================= */
+#loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(1px);
+    display: none;
+    opacity: 0;
+    justify-content: center;
+    align-items: center;
+    transition: opacity .35s;
+    z-index: 9999;
+}
+
+.loader-box {
+    background: white;
+    padding: 24px 36px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+.loader-spinner {
+    width: 48px;
+    height: 48px;
+    border: 5px solid #e0e0e0;
+    border-top: 5px solid #ba027d;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.loader-text {
+    font-size: 16px;
+    color: #ba027d;
+    font-weight: 600;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* ================= RESUMEN ================= */
+.modulo-resumen {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-bottom: 24px;
+}
+
+/* ================= SELECTORES RESUMEN ================= */
+.selectores-resumen {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.selectores-resumen .selector-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.selectores-resumen label {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: #56585b;
+}
+
+.selectores-resumen select {
+  padding: 10px 36px 10px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 12px;
+  border: 1px solid #d1d5db;
+  background: #fff;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='gray' viewBox='0 0 16 16'%3E%3Cpath d='M1.5 5.5l6 6 6-6'/%3E%3C/svg%3E");
+  background-position: right 12px center;
+  background-repeat: no-repeat;
+  background-size: 14px;
+  cursor: pointer;
+}
+
+.selectores-resumen select:hover {
+  border-color: #3b82f6;
+}
+
+.selectores-resumen select:focus {
+  border-color: #2563eb;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.2);
+}
+
+/* ================= CARDS ================= */
+.resumen-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+}
+
+.card h3 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #222;
+}
+
+/* ================= SALDO ================= */
+.card-saldo .saldo-principal span {
+  font-size: 12px;
+  color: #666;
+}
+
+.card-saldo .saldo-principal strong {
+  display: block;
+  font-size: 28px;
+  margin-top: 6px;
+}
+
+.saldo-detalle {
+  display: flex;
+  gap: 40px;
+  margin-top: 20px;
+}
+
+.saldo-detalle small {
+  font-size: 11px;
+  color: #888;
+}
+
+.saldo-detalle span {
+  display: block;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+/* ================= TABLA RESUMEN ================= */
+.card-tabla {
+  display: flex;
+  flex-direction: column;
+  height: 420px;
+  border: 1px solid #fbfbfb;
+  border-radius: 16px;
+  overflow: hidden;
+  background-color: #fff;
+  padding: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.064);
+}
+
+.tabla-scroll {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100%;
+  width: 100%;
+}
+
+/* ===== TABLA ===== */
+.tabla-flujo {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: separate;   /* evita grietas */
+  border-spacing: 0;
+}
+
+/* ===== ENCABEZADOS STICKY ===== */
+.tabla-flujo thead th {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #eff1fa;
+  box-shadow: 0 1px 0 #ccc;
+
+  /* títulos sí pueden partirse */
+  white-space: normal;
+  word-break: break-word;
+}
+
+/* ===== FILA TOTAL STICKY ===== */
+.tabla-flujo tr.total td {
+  position: sticky;
+  bottom: 0;
+  z-index: 9;
+  background: #e1e1e1;
+  box-shadow: 0 -1px 0 #bbb;
+  font-weight: 700;
+}
+
+/* ===== CELDAS ===== */
+.tabla-flujo th,
+.tabla-flujo td {
+  padding: 6px 8px;
+  border: 0.5px solid rgba(0,0,0,0.08);
+  text-align: center;
+  font-size: 12px;
+}
+
+
+/* ===== VALORES MONETARIOS ===== */
+.tabla-flujo td {
+  white-space: nowrap;     /* 🔑 no partir valores */
+}
+
+/* ===== TÍTULOS ===== */
+.tabla-flujo th {
+  white-space: normal;     /* 🔑 títulos en 2 líneas */
+}
+
+/* ================= TABS ================= */
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.tab {
+  padding: 6px 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  background: #e5e7eb;
+}
+
+.tab.active {
+  background: #ba027d;
+  color: #fff;
+}
+
+.titulo-tabla {
+  margin-bottom: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  background: white;
+}
+
+.contenedor-principal.login-fondo {
+    background-size: cover;
+    min-height: 100vh;
+}
+
+
