@@ -131,6 +131,8 @@ body {
 .menu-item[data-modulo="produccion"]::before { content:"📊"; }
 .menu-item[data-modulo="gastos"]::before { content:"💼"; }
 .menu-item[data-modulo="liquidaciones"]::before { content:"💰"; }
+.menu-item[data-modulo="inventarios"]::before { content:"📦"; }
+.menu-item[data-modulo="financiero"]::before { content:"💵"; }
 .menu-item[data-modulo="cxc"]::before { content:"🗳️"; }
 
 .menu-item.active::after {
@@ -671,5 +673,171 @@ canvas {
     background-size: cover;
     min-height: 100vh;
 }
+
+
+
+
+
+
+
+/* ================= INVENTARIOS ================= */
+
+#modulo-inventarios {
+  padding-top: 10px;
+}
+
+/* ================= CARD CONTENEDOR ================= */
+
+.inventarios-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.08);
+  padding: 14px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 100%;
+}
+
+/* ================= HEADER CARD ================= */
+
+.inventarios-card-header {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.inventarios-card-header h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1f2937;
+  letter-spacing: 0.3px;
+}
+
+/* ================= CONTENEDOR SCROLL ================= */
+
+.inventarios-tabla-wrapper {
+  max-height: 55vh;
+  overflow-y: auto;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+}
+
+@media (max-height: 800px) {
+  .inventarios-tabla-wrapper {
+    max-height: 45vh;
+  }
+}
+
+/* ================= TABLA ================= */
+
+.tabla-inventarios {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 12px;
+}
+
+/* ================= CELDAS ================= */
+
+.tabla-inventarios th,
+.tabla-inventarios td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #e5e7eb;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ================= HEADER ================= */
+
+.tabla-inventarios thead th {
+  position: sticky;
+  top: 0;
+  background: linear-gradient(180deg, #f9fafb, #f3f4f6);
+  z-index: 3;
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+/* ================= ANCHOS DE COLUMNAS ================= */
+
+/* SEM */
+.tabla-inventarios th:nth-child(1),
+.tabla-inventarios td:nth-child(1) {
+  width: 60px;
+  text-align: center;
+}
+
+/* EMPRESA */
+.tabla-inventarios th:nth-child(2),
+.tabla-inventarios td:nth-child(2) {
+  width: 140px;
+  text-align: left;
+}
+
+/* HACIENDA */
+.tabla-inventarios th:nth-child(3),
+.tabla-inventarios td:nth-child(3) {
+  width: 140px;
+  text-align: left;
+}
+
+/* PRODUCTO */
+.tabla-inventarios th:nth-child(4),
+.tabla-inventarios td:nth-child(4) {
+  width: 280px;
+  text-align: left;
+}
+
+/* CATEGORÍA */
+.tabla-inventarios th:nth-child(5),
+.tabla-inventarios td:nth-child(5) {
+  width: 160px;
+  text-align: left;
+}
+
+/* RESTO */
+.tabla-inventarios th:nth-child(n+6),
+.tabla-inventarios td:nth-child(n+6) {
+  width: 110px;
+  text-align: right;
+}
+
+/* ================= FILAS ================= */
+
+.tabla-inventarios tbody tr:hover {
+  background: #b2cae277;
+}
+
+/* ================= FILA TOTAL (AJUSTE FINO) ================= */
+
+.fila-total {
+  position: sticky;
+  bottom: -1px;              /* 🔑 pega la fila al borde real */
+  background: #ffffff;
+  font-weight: 700;
+  z-index: 4;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.12);
+}
+
+.fila-total td {
+  border-top: 2px solid #0b0c0f;
+  background: #e4e4e4;       /* evita transparencia */
+}
+
+.fila-total td:last-child {
+  font-size: 16px;
+  font-weight: 700;
+  color: #3d3da8;
+}
+
+
+
+
+
+
+
 
 
