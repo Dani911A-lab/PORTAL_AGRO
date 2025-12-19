@@ -336,7 +336,7 @@ function insertarCarteraMinimalista() {
 
     const empresas = [
         { nombre: "TECNIAGREX S.A.", semanas: [0, 55714.88, 0, 0] },
-        { nombre: "KRASNAYA S.A.", semanas: [0, 82679.71, 0, 0] }
+        { nombre: "KRASNAYA S.A.", semanas: [2264.64, 108256.51, 0, 0] }
     ];
 
     const totalColumnas = empresas[0].semanas.map((_, i) =>
@@ -434,7 +434,7 @@ function insertarCarteraMinimalista() {
         line-height:1;
     ">🛈</span>
     <span>
-    Semanas 50 y 51 en Proceso..</span>
+    Valores tentativos sem 49</span>
 </div>
     `;
 
@@ -847,8 +847,6 @@ function mostrarGraficoFlujo() {
 function cerrarGraficoFlujo() {
     document.getElementById("modalGraficoFlujo").style.display = "none";
 }
-
-
 
 
 
