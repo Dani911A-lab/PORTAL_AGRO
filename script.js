@@ -379,7 +379,9 @@ moduloBtns.forEach(btn => {
       btn.dataset.modulo === "produccion" ? "Producción" :
       btn.dataset.modulo === "gastos" ? "Gastos" :
       btn.dataset.modulo === "liquidaciones" ? "Liquidaciones" :
+      btn.dataset.modulo === "inventarios" ? "Inventarios" :
       btn.dataset.modulo === "resumen" ? "Resumen" :
+      btn.dataset.modulo === "financiero" ? "Financiero" :
       currentModule;
 
     // Actualiza título principal
@@ -387,35 +389,80 @@ moduloBtns.forEach(btn => {
     tablaDetalle.innerHTML = "";
 
     const resumenSection = document.getElementById("modulo-resumen");
+    const inventariosSection = document.getElementById("modulo-inventarios");
+    const financieroSection = document.getElementById("modulo-financiero");
     const otherSections = document.querySelectorAll('[data-vista]');
 
-if (currentModule === "Resumen") {
-  // Mostrar solo Resumen
-  resumenSection.style.display = "flex";
+    // 🔴 OCULTAR INVENTARIOS SIEMPRE AL CAMBIAR
+    if (inventariosSection) inventariosSection.style.display = "none";
 
-  // Ocultar selectores y KPIs globales
-  const selectores = document.querySelectorAll('.selectores');
-  selectores.forEach(s => s.style.display = 'none');
-  kpisContainer.style.display = "none";
-  tabsContainer.innerHTML = "";
+    /* ========== RESUMEN ========== */
+    if (currentModule === "Resumen") {
 
-  otherSections.forEach(sec => {
-    if (sec.dataset.vista !== "resumen") sec.style.display = "none";
-  });
+      resumenSection.style.display = "flex";
 
-  // Llamar a función del modulo-resumen.js que genera tabla dinámica
-  cargarResumen(); 
-  return;
-} else {
-  // Mostrar módulo normal y ocultar Resumen
-  resumenSection.style.display = "none";
-  const selectores = document.querySelectorAll('.selectores');
-  selectores.forEach(s => s.style.display = 'flex');
-  kpisContainer.style.display = "flex";
-  otherSections.forEach(sec => {
-    if (sec.dataset.vista !== "resumen") sec.style.display = "grid";
-  });
-}
+      const selectores = document.querySelectorAll('.selectores');
+      selectores.forEach(s => s.style.display = 'none');
+
+      kpisContainer.style.display = "none";
+      tabsContainer.innerHTML = "";
+
+      otherSections.forEach(sec => {
+        if (sec.dataset.vista !== "resumen") sec.style.display = "none";
+      });
+
+      cargarResumen();
+      return;
+    }
+
+    /* ========== INVENTARIOS ========== */
+    if (currentModule === "Inventarios") {
+
+      otherSections.forEach(sec => sec.style.display = "none");
+      resumenSection.style.display = "none";
+
+      const selectores = document.querySelectorAll('.selectores');
+      selectores.forEach(s => s.style.display = 'none');
+      kpisContainer.style.display = "none";
+      tabsContainer.innerHTML = "";
+
+      inventariosSection.style.display = "block";
+      return;
+    }
+
+    /* ========== FINANCIERO ========== */
+    if (currentModule === "Financiero") {
+
+      otherSections.forEach(sec => sec.style.display = "none");
+      resumenSection.style.display = "none";
+      inventariosSection.style.display = "none";
+
+      const selectores = document.querySelectorAll('.selectores');
+      selectores.forEach(s => s.style.display = 'none');
+      kpisContainer.style.display = "none";
+      tabsContainer.innerHTML = "";
+
+      financieroSection.style.display = "block";
+      return;
+    }
+
+    /* ========== MÓDULOS NORMALES: Producción, Gastos, Liquidaciones ========== */
+
+    resumenSection.style.display = "none";
+
+    const selectores = document.querySelectorAll('.selectores');
+    selectores.forEach(s => s.style.display = 'flex');
+
+    kpisContainer.style.display = "flex";
+
+    // Mostrar SOLO secciones de módulos normales
+    otherSections.forEach(sec => {
+      if (["produccion","gastos","liquidaciones"].includes(sec.dataset.vista)) {
+        sec.style.display = "grid";
+      } else {
+        sec.style.display = "none";
+      }
+    });
 
     // Si no hay hoja para el módulo, limpia todo
     if (!sheetURLs[currentModule]) {
@@ -431,6 +478,9 @@ if (currentModule === "Resumen") {
     cargarDatosModulo(currentModule);
   });
 });
+
+
+
 
 
 
