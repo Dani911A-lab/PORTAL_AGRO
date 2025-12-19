@@ -39,6 +39,8 @@
         <a class="menu-item active" data-modulo="produccion">PRODUCCIÓN</a>
         <a class="menu-item" data-modulo="gastos">GASTOS</a>
         <a class="menu-item" data-modulo="liquidaciones">LIQUIDACIONES</a>
+        <a class="menu-item" data-modulo="inventarios">INVENTARIOS</a>
+        <a class="menu-item" data-modulo="financiero">FINANCIERO</a>
         <a class="menu-item" data-modulo="resumen">🗃️ RESUMEN</a>
       </nav>
     </aside>
@@ -140,6 +142,52 @@
             </div>
           </div>
         </section>
+
+
+        
+
+<!-- ===================== MÓDULO INVENTARIOS ===================== -->
+<section id="modulo-inventarios" class="modulo" style="display:none;">
+
+  <!-- SELECTORES -->
+  <div class="selectores-resumen inventarios-selectores">
+    <div class="selector-item">
+      <label>Empresa:</label>
+      <select id="invEmpresaSelect"></select>
+    </div>
+
+    <div class="selector-item">
+      <label>Hacienda:</label>
+      <select id="invHaciendaSelect"></select>
+    </div>
+  </div>
+
+  <!-- CARD INVENTARIOS -->
+  <div class="inventarios-card">
+
+    <div class="inventarios-card-header">
+      <h3 id="inventariosTitulo">
+        Stock TECNIAGREX || Actualizado hasta Corte al 2025-12-14.
+      </h3>
+    </div>
+
+    <div class="inventarios-tabla-wrapper">
+      <table class="tabla-inventarios">
+        <thead>
+          <tr id="invThead"></tr>
+        </thead>
+        <tbody id="invTbody"></tbody>
+      </table>
+    </div>
+
+  </div>
+
+</section>
+
+
+
+
+
 
         <!-- ================= RESUMEN ================= -->
         <section id="modulo-resumen" class="modulo-resumen" data-vista="resumen" style="display:none;">
@@ -340,6 +388,7 @@
 
 
 <script src="script.js"></script>
+<script src="inventarios.js"></script>
 <script src="modulo-resumen.js"></script>
 
 <script>
