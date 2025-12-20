@@ -834,6 +834,19 @@ canvas {
 }
 
 
+#tablaDetalleContainer {
+  max-height: 300px; /* altura del contenedor del tbody */
+  overflow-y: auto;
+  display: block;
+}
+
+
+
+
+
+.tabla-detalle tbody td {
+  color: #227c89; /* por ejemplo, gris oscuro */
+}
 
 
 
