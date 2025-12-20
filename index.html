@@ -2,8 +2,11 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>Minisistema</title>
+  <title>PortalAGRO</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- ICONO DE LA PESTAÑA -->
+  <link rel="icon" type="image/png" href="ico.png">
 
   <link rel="stylesheet" href="styles.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -11,6 +14,7 @@
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
+
 
 <body>
 
@@ -103,45 +107,57 @@
           <div class="kpi"><h4>KPI 5</h4><span id="kpi5">0</span></div>
         </div>
 
-        <!-- ================= PRODUCCIÓN ================= -->
-        <section class="zona-superior" data-vista="produccion">
-          <div class="tabla-contenedor">
-            <div class="titulo-tabla" id="titulo-tabla">TABLA PRINCIPAL</div>
-            <div class="tabla-scroll">
-              <table class="tabla-produccion">
-                <thead>
-                  <tr id="theadTabla"></tr>
-                </thead>
-                <tbody id="tablaBody"></tbody>
-              </table>
-            </div>
-          </div>
+<!-- ================= PRODUCCIÓN ================= -->
+<section class="zona-superior" data-vista="produccion">
 
-          <div id="panel-detalles" class="tabla-contenedor">
-            <div class="titulo-tabla">DETALLES</div>
-            <div class="tabla-scroll">
-              <table class="tabla-detalle">
-                <thead>
-                  <tr>
-                    <th>Tipo</th>
-                    <th>Detalle</th>
-                    <th>Valor</th>
-                  </tr>
-                </thead>
-                <tbody id="tablaDetalle"></tbody>
-              </table>
-            </div>
-          </div>
-        </section>
+  <!-- TABLA PRINCIPAL -->
+  <div class="tabla-contenedor">
+    <div class="titulo-tabla" id="titulo-tabla">TABLA PRINCIPAL</div>
+    <div class="tabla-scroll">
+      <table class="tabla-produccion">
+        <thead>
+          <tr id="theadTabla"></tr>
+        </thead>
+        <tbody id="tablaBody"></tbody>
+      </table>
+    </div>
+  </div>
 
-        <section class="zona-inferior" data-vista="produccion">
-          <div class="grafico-box">
-            <div class="tabs"></div>
-            <div class="grafico-wrapper">
-              <canvas id="grafico"></canvas>
-            </div>
-          </div>
-        </section>
+  <!-- TABLA DETALLES CON FILA TOTAL FIJA -->
+  <div id="panel-detalles" class="tabla-contenedor">
+    <div class="titulo-tabla">DETALLES</div>
+
+    <!-- Contenedor scrollable solo para tbody -->
+    <div id="tablaDetalleContainer" style="max-height:250px; overflow-y:auto;">
+      <table class="tabla-detalle" style="width:100%; border-collapse:collapse;">
+        <thead>
+          <tr>
+            <th>Tipo</th>
+            <th>Detalle</th>
+            <th>Valor</th>
+          </tr>
+        </thead>
+        <tbody id="tablaDetalle">
+          <!-- JS insertará filas aquí -->
+        </tbody>
+      </table>
+    </div>
+
+
+  </div>
+</section>
+
+<!-- ================= GRÁFICO ================= -->
+<section class="zona-inferior" data-vista="produccion">
+  <div class="grafico-box">
+    <div class="tabs"></div>
+    <div class="grafico-wrapper">
+      <canvas id="grafico"></canvas>
+    </div>
+  </div>
+</section>
+
+
 
 
         
